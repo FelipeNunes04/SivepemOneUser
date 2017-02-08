@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content_title %}Saldo{% endblock %}
+{% block box_title %}Resultado da Pesquisa{% endblock %}
+
+{% block box_body %}
+<section>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Detalhes</th>
+				<th>Códido do serviço</th>
+				<th>Códido do Cliente</th>
+				<th>Parcelas</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for s in object_list %}
+				<tr>
+					<td>
+						<a href="{% url 'detalhe-servico' s.pk %}">
+							Visualizar
+						</a>
+					</td>
+					<td>{{ s.codigo }}</td>
+					<td>{{ s.codigo_cliente }}</td>
+					<td>{{ s.tipo_parcelamento }}</td>
+					<td>
+					<a href="{% url 'update-servico' s.pk %}">Editar</a>
+					<b>|</b>
+					<a href="{% url 'delete-servico' s.pk %}">Deletar</a>
+					</td>	
+				</tr>
+				{% empty %}
+					<tr>
+						<td colspan ="4">
+							Este cliente não tem serviços!
+						</td>
+					</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot>
+			<th>Detalhes</th>
+			<th>Códido do serviço</th>
+			<th>Códido do Cliente</th>
+			<th>Parcelas</th>
+			<th>Ações</th>
+		</tfoot>
+	</table>
+</section>
+{% endblock	 %}

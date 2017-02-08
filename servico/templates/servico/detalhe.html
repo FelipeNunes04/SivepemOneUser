@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content_title %}Serviços{% endblock %}
+{% block box_title %}Detalhes{% endblock %}
+
+{% block box_body %}
+<section>
+	<table class="table table-striped table-hover">
+		
+		<tr><b>Código do Serviço:</b> {{ object.codigo }}</tr><br>
+		<tr><b>Código do Cliente:</b> {{ object.codigo_cliente }}</tr><br>
+		<tr><b>Valor do Seviço:</b> R${{ object.valor_servico|floatformat:2 }}</tr><br>
+		<tr><b>Juros Cobrado:</b> {{ object.juros }}%</tr><br>
+		<tr><b>Valor restante a ser pago:</b> R${{ object.valor_total|floatformat:2 }}</tr><br>
+		<tr><b>Número de Parcelas normais a pagar:</b> {{ object.numero_parcelas }}</tr><br>
+		<tr><b>Valor de cada Parcela normal:</b> R${{ object.valor_parcela|floatformat:2 }}</tr><br>
+		<tr><b>Número de Parcelas extras a pagar:</b> {{ object.numero_parcelas_extra }}</tr><br>
+		<tr><b>Valor da próxima parcela extra:</b> R${{ object.valor_parcela_extra|floatformat:2 }}</tr><br>
+		<tr><b>Modo de Parcelamento:</b> {{ object.tipo_parcelamento }}</tr><br>
+		<tr><b>Vencimento da próxima parcela:</b> {{ object.vencimento_parcela }}</tr><br>
+		<tr><b>Vencimento da última parcela:</b> {{ object.vencimento_ultima_parcela }}</tr><br>
+		<tr><b>Data da Realização do Serviço:</b> {{ object.data_servico }}</tr><br>
+		<tr>
+			{% if object.pago %}
+				<h3 class="text-green">
+					PAGO
+				</h3>
+			{% else %}
+				<h3 class="text-red">
+					DEVENDO
+				</h3>
+			{% endif %}
+		</tr><br>
+		<tr>
+			<b>Obs:</b> Parcelas extras só devem ser pagas quando não haverem mais parcelas normais.
+		</tr>
+	</table>
+</section>
+{% endblock	 %}

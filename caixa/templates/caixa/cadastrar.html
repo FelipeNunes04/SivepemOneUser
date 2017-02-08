@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content_title %}Caixa{% endblock %}
+{% block box_title %}Lançar Dinheiro no Caixa{% endblock %}
+
+{% block box_body %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+	{% for field in form %}
+		<div class="form-group">
+			{{ field.label_tag }}
+			{% if field.field.required == True %}
+				(Obrigatório)
+			{% endif %}
+			{{ field }}
+			{% for error in field.errors %}
+				<span class="help-inline text-Warning">{{ error }}</span>
+			{% endfor %}
+		</div>
+	{% endfor %}
+<button type="submit" class="btn btn-primary btn-flat" >Salvar e Lançar mais valores</button>
+</form>
+
+<!-- vencimento parcela -->
+<script type="text/javascript" charset="utf-8">
+	venceParcela();
+</script>
+
+{% endblock %}

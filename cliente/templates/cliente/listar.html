@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content_title %}Clientes{% endblock %}
+{% block box_title %}Listar{% endblock %}
+
+{% block box_body %}
+<section>
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Detalhes</th>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>CPF</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for c in object_list %}
+				<tr>
+					<td>
+						<a href="{% url 'detalhe-cliente' c.pk %}">
+							Visualizar
+						</a>
+					</td>
+					<td>{{ c.codigo }}</td>
+					<td>{{ c.nome }}</td>
+					<td><img src="{{ c.cpf.url }}" width="46.5" height="30" onclick="zoomToggle('46.5px','30px','232px','150px',this);"></td>
+					<td>
+					<a href="{% url 'update-cliente' c.pk %}">Editar</a>
+					<b>|</b>
+					<a href="{% url 'delete-cliente' c.pk %}">Deletar</a>
+					<td>
+				</tr>
+				{% empty %}
+					<tr>
+						<td colspan ="4">
+							Não há clientes cadastrados!
+						</td>
+					</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot>
+			<th>Detalhes</th>
+			<th>Código</th>
+			<th>Nome</th>
+			<th>CPF</th>
+			<th>Ações</th>
+		</tfoot>
+	</table>
+</section>
+<a href="{% url 'cadastrar-cliente' %}" class="btn btn-primary btn-flat">Novo Cliente</a>
+{% endblock	 %}

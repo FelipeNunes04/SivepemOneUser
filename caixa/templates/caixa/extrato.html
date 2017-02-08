@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content_title %}Caixa{% endblock %}
+{% block box_title %}Vizualizar Extrato{% endblock %}
+
+{% block box_body %}
+<section>
+	<table class="table table-striped table-hover">
+		<tr><b>Valor Lançado no Caixa:</b> R${{ valor_lancado_caixa|floatformat:2 }}</tr><br>
+		<tr><b>Valor Arrecadado:</b> R${{ valor_arrecadado|floatformat:2 }}</tr><br>
+		<tr><b>Valor Emprestado:</b> R${{ valor_emprestado|floatformat:2 }}</tr><br>
+		<tr><b>Valor das Despesas com Gasolina:</b> R${{ valor_despesas_gasolina|floatformat:2 }}</tr><br>
+		<tr><b>Valor das Despesas com Comida:</b> R${{ valor_despesas_comida|floatformat:2 }}</tr><br>
+		<tr><b>Valor das Despesas com Outros:</b> R${{ valor_despesas_outros|floatformat:2 }}</tr><br>
+		<tr><b>Valor Total das Despesas:</b> R${{ valor_despesas|floatformat:2 }}</tr><br>
+		<tr><b>Valor restante no Caixa:</b> R${{ valor_atual_caixa|floatformat:2 }}</tr><br>
+	</table>
+</section>
+{% endblock	 %}

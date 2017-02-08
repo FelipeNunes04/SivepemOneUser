@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content_title %}Clientes{% endblock %}
+{% block box_title %}Detalhes{% endblock %}
+
+{% block box_body %}
+<section>
+	<table class="table table-striped table-hover">
+		
+		<tr><b>Código do Cliente:</b> {{ object.codigo }}</tr><br>
+		<tr><b>Nome:</b> {{ object.nome }}</tr><br>
+		<tr><b>CPF:</b> <img src="{{ object.cpf.url }}" width="46.5" height="30" onclick="zoomToggle('46.5px','30px','232px','150px',this);"></tr><br>
+		<tr><b>Telefone:</b> {{ object.telefone }}</tr><br>
+		<tr><b>Endereço:</b> {{ object.endereco }}</tr><br>
+		<tr><b>Limite:</b> R${{ object.limite }}</tr><br>
+	</table>
+</section>
+{% endblock	 %}
